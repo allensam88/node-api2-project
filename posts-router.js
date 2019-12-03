@@ -138,7 +138,7 @@ router.put('/:id', (req, res) => {
     } else {
         db.update(id, changes)
             .then(post => {
-                db.findById(id)
+                db.findById(post.id)
                     .then(updated => {
                         res.status(200).json(updated);
                     })
@@ -212,7 +212,7 @@ router.post('/:id/comments', (req, res) => {
             })
             .catch(error => {
                 console.log(error);
-                res.status(500).json({ error: "There was an error while saving the comment to the database" });
+                res.status(500).json({ error: "There was an error while saving the comment to the database." });
             });
     }
 });
