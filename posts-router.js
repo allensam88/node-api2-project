@@ -137,10 +137,10 @@ router.put('/:id', (req, res) => {
         res.status(400).json({ errorMessage: "Please provide title and contents for the post." });
     } else {
         db.update(id, changes)
-            .then(post => {
-                db.findById(post.id)
-                    .then(updated => {
-                        res.status(200).json(updated);
+            .then(response => {
+                db.findById(id)
+                    .then(updatedPost => {
+                        res.status(200).json(updatedPost);
                     })
             })
             .catch(error => {
